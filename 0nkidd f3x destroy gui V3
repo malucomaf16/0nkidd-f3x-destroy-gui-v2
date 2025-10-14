@@ -637,28 +637,6 @@ createButton(f3xScroll, "0nkidd Favorite Map", function()
     end
 end)
 
-createButton(f3xScroll, "0nkidd Base", function()
-    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-    Request:InvokeServer(";btools")
-    Request:InvokeServer(";fogcolor black")
-    Request:InvokeServer(";time 12")
-    task.wait(1)
-    local f3x = getF3XTool()
-    if not f3x then return end
-    local serverEndpoint = f3x.SyncAPI.ServerEndpoint
-    for _, v in ipairs(workspace:GetDescendants()) do
-        if v:IsA("BasePart") or v:IsA("UnionOperation") or v:IsA("Model") then
-            task.spawn(function() pcall(function() serverEndpoint:InvokeServer("Remove", {v}) end) end)
-        end
-    end
-    task.wait(2)
-    local base = serverEndpoint:InvokeServer("CreatePart","Normal",CFrame.new(0,0,0),workspace)
-    serverEndpoint:InvokeServer("SyncResize",{ {Part=base,CFrame=CFrame.new(0,0,0),Size=Vector3.new(300,5,300)} })
-    serverEndpoint:InvokeServer("SyncColor",{ {Part=base,Color=Color3.fromRGB(0,0,0),UnionColoring=false} })
-    serverEndpoint:InvokeServer("SetLocked",{base},true)
-    serverEndpoint:InvokeServer("SetName",{base},"0nkiddBaseplate")
-end)
-
 createButton(f3xScroll, "Delete All", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";btools")
@@ -771,6 +749,428 @@ createButton(realmsScroll, "0nkidd Realm v2", function()
         char:SetPrimaryPartCFrame(CFrame.new(0,10,0))
     end
 end)
+    
+createButton(realmsScroll, "0nkidd military base", function()
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    
+    -- Önce her şeyi temizle
+    RequestCommand:InvokeServer(";btools me")
+    RequestCommand:InvokeServer(";fogcolor black")
+    RequestCommand:InvokeServer(";time 12")
+    
+    wait(1)
+    
+    local f3x = getF3XTool()
+    if not f3x then
+        warn("F3X tool bulunamadı!")
+        return
+    end
+    
+    local syncAPI = f3x.SyncAPI
+    local serverEndpoint = syncAPI.ServerEndpoint
+    
+    -- TÜM PARTLARI SİL
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") or v:IsA("UnionOperation") or v:IsA("Model") then
+            spawn(function()
+                pcall(function()
+                    serverEndpoint:InvokeServer("Remove", {v})
+                end)
+            end)
+        end
+    end
+    
+    wait(2)
+    
+    -- BASEPLATE 
+    local baseplate = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 0, 0), workspace)
+    serverEndpoint:InvokeServer("SyncResize", {
+        {["Part"] = baseplate, ["CFrame"] = CFrame.new(0, 0, 0), ["Size"] = Vector3.new(300, 5, 300)}
+    })
+    serverEndpoint:InvokeServer("SyncColor", {
+        {["Part"] = baseplate, ["Color"] = Color3.fromRGB(0, 0, 0), ["UnionColoring"] = false}
+    })
+    serverEndpoint:InvokeServer("SetLocked", {baseplate}, true)
+    serverEndpoint:InvokeServer("SetName", {baseplate}, "0nkiddBaseplate")
+    
+    -- SKYBOX 
+    local skyPosition = CFrame.new(0, 50, 0)
+    local skyPart = serverEndpoint:InvokeServer("CreatePart", "Normal", skyPosition, workspace)
+    serverEndpoint:InvokeServer("CreateMeshes", {
+        {["Part"] = skyPart}
+    })
+    serverEndpoint:InvokeServer("SyncMesh", {
+        {["Part"] = skyPart, ["MeshId"] = "rbxassetid://111891702759441"}
+    })
+    serverEndpoint:InvokeServer("SyncMesh", {
+        {["Part"] = skyPart, ["TextureId"] = "rbxassetid://131917032785234"}  -- SENİN SKYBOX ID'N
+    })
+    serverEndpoint:InvokeServer("SyncMesh", {
+        {["Part"] = skyPart, ["Scale"] = Vector3.new(10000, 10000, 10000)}
+    })
+    serverEndpoint:InvokeServer("SetLocked", {skyPart}, true)
+    serverEndpoint:InvokeServer("SetName", {skyPart}, "0nkiddSky")
+    
+    -- military base
+    local function createMilitaryBase()
+        -- SAFE ROOM
+        -- Safe Room Zemin
+        local safeRoomFloor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 2.5, 0), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = safeRoomFloor, ["CFrame"] = CFrame.new(0, 2.5, 0), ["Size"] = Vector3.new(20, 1, 20)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = safeRoomFloor, ["Color"] = Color3.fromRGB(0, 0, 0), ["UnionColoring"] = false}
+        })
+        
+        -- Safe Room Duvarlar (Siyah)
+        local safeRoomWalls = {
+            {pos = CFrame.new(0, 5, 10), size = Vector3.new(20, 10, 1)},   
+            {pos = CFrame.new(0, 5, -10), size = Vector3.new(20, 10, 1)},  
+            {pos = CFrame.new(10, 5, 0), size = Vector3.new(1, 10, 20)},   
+            {pos = CFrame.new(-10, 5, 0), size = Vector3.new(1, 10, 20)}   
+        }
+        
+        for _, wall in ipairs(safeRoomWalls) do
+            local wallPart = serverEndpoint:InvokeServer("CreatePart", "Normal", wall.pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = wallPart, ["CFrame"] = wall.pos, ["Size"] = wall.size}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = wallPart, ["Color"] = Color3.fromRGB(0, 0, 0), ["UnionColoring"] = false}
+            })
+        end
+        
+        -- Safe Room (Disable Collision)
+        local safeRoomDoor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 3, -9.5), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = safeRoomDoor, ["CFrame"] = CFrame.new(0, 3, -9.5), ["Size"] = Vector3.new(4, 6, 1)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = safeRoomDoor, ["Color"] = Color3.fromRGB(50, 50, 50), ["UnionColoring"] = false}
+        })
+        serverEndpoint:InvokeServer("SyncCollision", {
+            {["Part"] = safeRoomDoor, ["CanCollide"] = false}
+        })
+        
+        -- SAFE ROOM
+        local safeRoomSign = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 8, -9.6), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = safeRoomSign, ["CFrame"] = CFrame.new(0, 8, -9.6), ["Size"] = Vector3.new(6, 1, 0.2)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = safeRoomSign, ["Color"] = Color3.fromRGB(255, 255, 255), ["UnionColoring"] = false}
+        })
+        
+        -- Safe Room Masa
+        local safeRoomTable = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 3, 5), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = safeRoomTable, ["CFrame"] = CFrame.new(0, 3, 5), ["Size"] = Vector3.new(6, 1, 3)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = safeRoomTable, ["Color"] = Color3.fromRGB(30, 30, 30), ["UnionColoring"] = false}
+        })
+        
+        -- Masa Paper
+        local paper = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 3.6, 5), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = paper, ["CFrame"] = CFrame.new(0, 3.6, 5), ["Size"] = Vector3.new(4, 0.1, 2)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = paper, ["Color"] = Color3.fromRGB(255, 255, 255), ["UnionColoring"] = false}
+        })
+        
+        -- Koridor Zemin
+        local corridorFloor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 2.5, -20), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = corridorFloor, ["CFrame"] = CFrame.new(0, 2.5, -20), ["Size"] = Vector3.new(10, 1, 20)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = corridorFloor, ["Color"] = Color3.fromRGB(20, 20, 20), ["UnionColoring"] = false}
+        })
+        
+        -- Koridor Duvarlar
+        local corridorWalls = {
+            {pos = CFrame.new(5, 5, -20), size = Vector3.new(1, 10, 20)},  
+            {pos = CFrame.new(-5, 5, -20), size = Vector3.new(1, 10, 20)}   
+        }
+        
+        for _, wall in ipairs(corridorWalls) do
+            local wallPart = serverEndpoint:InvokeServer("CreatePart", "Normal", wall.pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = wallPart, ["CFrame"] = wall.pos, ["Size"] = wall.size}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = wallPart, ["Color"] = Color3.fromRGB(30, 30, 30), ["UnionColoring"] = false}
+            })
+        end
+        
+        -- Yemekhane Zemin
+        local cafeteriaFloor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 2.5, -45), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = cafeteriaFloor, ["CFrame"] = CFrame.new(0, 2.5, -45), ["Size"] = Vector3.new(30, 1, 25)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = cafeteriaFloor, ["Color"] = Color3.fromRGB(25, 25, 25), ["UnionColoring"] = false}
+        })
+        
+        -- Yemekhane Duvarlar
+        local cafeteriaWalls = {
+            {pos = CFrame.new(0, 5, -32.5), size = Vector3.new(30, 10, 1)},  
+            {pos = CFrame.new(0, 5, -57.5), size = Vector3.new(30, 10, 1)},  
+            {pos = CFrame.new(15, 5, -45), size = Vector3.new(1, 10, 25)},  
+            {pos = CFrame.new(-15, 5, -45), size = Vector3.new(1, 10, 25)} 
+        }
+        
+        for _, wall in ipairs(cafeteriaWalls) do
+            local wallPart = serverEndpoint:InvokeServer("CreatePart", "Normal", wall.pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = wallPart, ["CFrame"] = wall.pos, ["Size"] = wall.size}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = wallPart, ["Color"] = Color3.fromRGB(35, 35, 35), ["UnionColoring"] = false}
+            })
+        end
+        
+        -- Yemekhane Giriş Kapısı (Disable Collision)
+        local cafeteriaDoor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 3, -32.4), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = cafeteriaDoor, ["CFrame"] = CFrame.new(0, 3, -32.4), ["Size"] = Vector3.new(4, 6, 1)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = cafeteriaDoor, ["Color"] = Color3.fromRGB(60, 60, 60), ["UnionColoring"] = false}
+        })
+        serverEndpoint:InvokeServer("SyncCollision", {
+            {["Part"] = cafeteriaDoor, ["CanCollide"] = false}
+        })
+        
+        -- KOLONLAR
+        local columnPositions = {
+            CFrame.new(10, 5, -40),
+            CFrame.new(-10, 5, -40),
+            CFrame.new(10, 5, -50),
+            CFrame.new(-10, 5, -50)
+        }
+        
+        for _, pos in ipairs(columnPositions) do
+            local column = serverEndpoint:InvokeServer("CreatePart", "Normal", pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = column, ["CFrame"] = pos, ["Size"] = Vector3.new(2, 10, 2)}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = column, ["Color"] = Color3.fromRGB(40, 40, 40), ["UnionColoring"] = false}
+            })
+        end
+        
+        -- MASALAR (4 sandalyeli)
+        local tablePositions = {
+            {pos = CFrame.new(8, 3, -40), chairs = {
+                CFrame.new(10, 2.5, -40),
+                CFrame.new(6, 2.5, -40),
+                CFrame.new(8, 2.5, -42),
+                CFrame.new(8, 2.5, -38)
+            }},
+            {pos = CFrame.new(-8, 3, -40), chairs = {
+                CFrame.new(-10, 2.5, -40),
+                CFrame.new(-6, 2.5, -40),
+                CFrame.new(-8, 2.5, -42),
+                CFrame.new(-8, 2.5, -38)
+            }},
+            {pos = CFrame.new(8, 3, -50), chairs = {
+                CFrame.new(10, 2.5, -50),
+                CFrame.new(6, 2.5, -50),
+                CFrame.new(8, 2.5, -52),
+                CFrame.new(8, 2.5, -48)
+            }},
+            {pos = CFrame.new(-8, 3, -50), chairs = {
+                CFrame.new(-10, 2.5, -50),
+                CFrame.new(-6, 2.5, -50),
+                CFrame.new(-8, 2.5, -52),
+                CFrame.new(-8, 2.5, -48)
+            }}
+        }
+        
+        for _, tableData in ipairs(tablePositions) do
+            -- Masa
+            local tablePart = serverEndpoint:InvokeServer("CreatePart", "Normal", tableData.pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = tablePart, ["CFrame"] = tableData.pos, ["Size"] = Vector3.new(4, 1, 4)}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = tablePart, ["Color"] = Color3.fromRGB(50, 50, 50), ["UnionColoring"] = false}
+            })
+            
+            -- Sandalyeler
+            for _, chairPos in ipairs(tableData.chairs) do
+                local chair = serverEndpoint:InvokeServer("CreatePart", "Normal", chairPos, workspace)
+                serverEndpoint:InvokeServer("SyncResize", {
+                    {["Part"] = chair, ["CFrame"] = chairPos, ["Size"] = Vector3.new(1.5, 3, 1.5)}
+                })
+                serverEndpoint:InvokeServer("SyncColor", {
+                    {["Part"] = chair, ["Color"] = Color3.fromRGB(60, 60, 60), ["UnionColoring"] = false}
+                })
+            end
+        end
+        
+        -- KITCHEN
+        -- Kitchen Zemin
+        local kitchenFloor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(20, 2.5, -45), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = kitchenFloor, ["CFrame"] = CFrame.new(20, 2.5, -45), ["Size"] = Vector3.new(15, 1, 15)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = kitchenFloor, ["Color"] = Color3.fromRGB(25, 25, 25), ["UnionColoring"] = false}
+        })
+        
+        -- Kitchen Duvarlar
+        local kitchenWalls = {
+            {pos = CFrame.new(20, 5, -37.5), size = Vector3.new(15, 10, 1)},  
+            {pos = CFrame.new(20, 5, -52.5), size = Vector3.new(15, 10, 1)},   
+            {pos = CFrame.new(27.5, 5, -45), size = Vector3.new(1, 10, 15)},   
+            {pos = CFrame.new(12.5, 5, -45), size = Vector3.new(1, 10, 15)}    
+        }
+        
+        for _, wall in ipairs(kitchenWalls) do
+            local wallPart = serverEndpoint:InvokeServer("CreatePart", "Normal", wall.pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = wallPart, ["CFrame"] = wall.pos, ["Size"] = wall.size}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = wallPart, ["Color"] = Color3.fromRGB(35, 35, 35), ["UnionColoring"] = false}
+            })
+        end
+        
+        -- Kitchen (Disable Collision)
+        local kitchenDoor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(20, 3, -37.4), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = kitchenDoor, ["CFrame"] = CFrame.new(20, 3, -37.4), ["Size"] = Vector3.new(3, 6, 1)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = kitchenDoor, ["Color"] = Color3.fromRGB(60, 60, 60), ["UnionColoring"] = false}
+        })
+        serverEndpoint:InvokeServer("SyncCollision", {
+            {["Part"] = kitchenDoor, ["CanCollide"] = false}
+        })
+        
+        -- BUZDOLABI
+        local fridge = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(22, 4, -48), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = fridge, ["CFrame"] = CFrame.new(22, 4, -48), ["Size"] = Vector3.new(3, 6, 2)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = fridge, ["Color"] = Color3.fromRGB(200, 200, 200), ["UnionColoring"] = false}
+        })
+        
+        -- DOLAPLAR (4 adet)
+        local cabinetPositions = {
+            CFrame.new(17, 4, -48),
+            CFrame.new(17, 4, -42),
+            CFrame.new(23, 4, -42),
+            CFrame.new(26, 4, -45)
+        }
+        
+        for _, pos in ipairs(cabinetPositions) do
+            local cabinet = serverEndpoint:InvokeServer("CreatePart", "Normal", pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = cabinet, ["CFrame"] = pos, ["Size"] = Vector3.new(2, 6, 2)}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = cabinet, ["Color"] = Color3.fromRGB(80, 80, 80), ["UnionColoring"] = false}
+            })
+        end
+        
+        local prepTable = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(20, 3, -42), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = prepTable, ["CFrame"] = CFrame.new(20, 3, -42), ["Size"] = Vector3.new(6, 2, 3)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = prepTable, ["Color"] = Color3.fromRGB(70, 70, 70), ["UnionColoring"] = false}
+        })
+        
+
+        local utensils = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(20, 3.6, -42), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = utensils, ["CFrame"] = CFrame.new(20, 3.6, -42), ["Size"] = Vector3.new(4, 0.2, 2)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = utensils, ["Color"] = Color3.fromRGB(150, 150, 150), ["UnionColoring"] = false}
+        })
+        
+        -- EXIT KAPISI
+        local exitDoor = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(0, 3, -57.4), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = exitDoor, ["CFrame"] = CFrame.new(0, 3, -57.4), ["Size"] = Vector3.new(4, 6, 1)}
+        })
+        serverEndpoint:InvokeServer("SyncColor", {
+            {["Part"] = exitDoor, ["Color"] = Color3.fromRGB(80, 80, 80), ["UnionColoring"] = false}
+        })
+        serverEndpoint:InvokeServer("SyncCollision", {
+            {["Part"] = exitDoor, ["CanCollide"] = false}
+        })
+        
+        local fencePositions = {
+            {pos = CFrame.new(0, 2, -80), size = Vector3.new(100, 4, 2)},
+            {pos = CFrame.new(0, 2, 20), size = Vector3.new(100, 4, 2)},
+            {pos = CFrame.new(50, 2, -30), size = Vector3.new(2, 4, 100)}, 
+            {pos = CFrame.new(-50, 2, -30), size = Vector3.new(2, 4, 100)} 
+        }
+        
+        for _, fence in ipairs(fencePositions) do
+            local fencePart = serverEndpoint:InvokeServer("CreatePart", "Normal", fence.pos, workspace)
+            serverEndpoint:InvokeServer("SyncResize", {
+                {["Part"] = fencePart, ["CFrame"] = fence.pos, ["Size"] = fence.size}
+            })
+            serverEndpoint:InvokeServer("SyncColor", {
+                {["Part"] = fencePart, ["Color"] = Color3.fromRGB(50, 50, 50), ["UnionColoring"] = false}
+            })
+        end
+        
+        local lightPositions = {
+            CFrame.new(0, 9, 0),        -- Safe Room
+            CFrame.new(0, 9, -20),      -- Koridor
+            CFrame.new(0, 9, -45),      -- Yemekhane
+            CFrame.new(20, 9, -45)      -- Kitchen
+        }
+        
+        for _, pos in ipairs(lightPositions) do
+            local light = serverEndpoint:InvokeServer("CreatePart", "Normal", pos, workspace)
+            serverEndpoint:InvokeServer("CreateLights", {
+                {["Part"] = light, ["LightType"] = "PointLight"}
+            })
+            serverEndpoint:InvokeServer("SyncLighting", {
+                {["Part"] = light, ["LightType"] = "PointLight", ["Brightness"] = 3, ["Color"] = Color3.new(1, 1, 1)}
+            })
+            serverEndpoint:InvokeServer("SyncMaterial", {
+                {["Part"] = light, ["Transparency"] = 1}
+            })
+            serverEndpoint:InvokeServer("SyncCollision", {
+                {["Part"] = light, ["CanCollide"] = false}
+            })
+        end
+        
+        -- SPAWN NOKTASI (Safe Room içinde)
+        local spawnPoint = serverEndpoint:InvokeServer("CreatePart", "Spawn", CFrame.new(0, 3, 0), workspace)
+        serverEndpoint:InvokeServer("SyncResize", {
+            {["Part"] = spawnPoint, ["CFrame"] = CFrame.new(0, 3, 0), ["Size"] = Vector3.new(4, 1, 4)}
+        })
+        serverEndpoint:InvokeServer("SyncMaterial", {
+            {["Part"] = spawnPoint, ["Transparency"] = 1}
+        })
+        serverEndpoint:InvokeServer("SyncCollision", {
+            {["Part"] = spawnPoint, ["CanCollide"] = false}
+        })
+        
+        RequestCommand:InvokeServer(";res all")
+        wait(1)
+        RequestCommand:InvokeServer(";teleport all 0 3 0")
+    end
+    
+    createMilitaryBase()
+    
+    RequestCommand:InvokeServer(";sm 0NKIDD MILITARY BASE CREATED!")
+    RequestCommand:InvokeServer(";sh WELCOME TO 0NKIDD BASE")
+end)
 
 -- ====== ADMIN TAB ======
 createButton(adminScroll, "ForceField", function()
@@ -856,6 +1256,27 @@ createButton(adminScroll, "Titles", function()
 	Request:InvokeServer(";titleg me 0nkidd")
 end)
 
+createButton(adminScroll, "disco", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";disco")
+end)
+
+createButton(adminScroll, "undisco", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";undisco")
+end)
+
+createButton(adminScroll, "fog", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";fog 0 0")
+end)
+
+createButton(adminScroll, "unfog", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";unfog")
+end)
+
+
 createButton(adminScroll, "effects all", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";fire all ;sparkles all ;smoke all ;blur others ;spin others 75")
@@ -876,7 +1297,7 @@ createButton(adminScroll, "Infinite Yield", function()
 end)
 
 createButton(adminScroll, "c00lgui F3X", function()
-    loadstring(game:HttpGet("https://github.com/malucomaf16/c00lgui-hdadmin/blob/main/c00lgui-hdadmin.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/malucomaf16/c00lgui-hdadmin/refs/heads/main/c00lgui-hdadmin.lua"))()
 end)
 
 -- ====== MUSICS TAB ======
