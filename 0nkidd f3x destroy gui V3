@@ -1292,6 +1292,16 @@ createButton(adminScroll, "Sword All", function()
     Request:InvokeServer(";sword all")
 end)
 
+createButton(adminScroll, "Destroy players", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";res all ;unfly all ;char all 0nkidd ;spin all 55 ;blur all")
+	Request:InvokeServer(";uncmdbar2 all")
+	Request:InvokeServer(";res all ;unfly all ;char all 0nkidd ;spin all 55 ;blur all")
+	Request:InvokeServer(";fog 0 0; ;disco ;sparkles all ;smoke all")
+	Request:InvokeServer(";time 23")
+	Request:InvokeServer(";hg ENJOY YOUR NEW GAME HAHAHHA")
+end)
+
 createButton(adminScroll, "Infinite Yield", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
