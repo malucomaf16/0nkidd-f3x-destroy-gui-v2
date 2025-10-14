@@ -1,0 +1,953 @@
+-- 0nkidd F3X Destroy GUI
+-- Created by K3ngx1RIV
+-- Background: rbxthumb://type=Asset&id=131917032785234&w=420&h=420
+
+
+
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+local iconGui = Instance.new("ScreenGui")
+iconGui.Name = "0NDIcon"
+iconGui.ResetOnSpawn = false
+iconGui.Parent = playerGui
+
+local iconButton = Instance.new("TextButton")
+iconButton.Name = "0NDButton"
+iconButton.Size = UDim2.new(0, 60, 0, 60)
+iconButton.Position = UDim2.new(0, 10, 0, 10)
+iconButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+iconButton.BorderSizePixel = 2
+iconButton.BorderColor3 = Color3.fromRGB(255, 255, 0)
+iconButton.Text = "0ND"
+iconButton.TextColor3 = Color3.fromRGB(255, 255, 0)
+iconButton.TextScaled = true
+iconButton.Font = Enum.Font.Arial
+iconButton.TextSize = 14
+iconButton.ZIndex = 10
+iconButton.Parent = iconGui
+
+local iconCorner = Instance.new("UICorner")
+iconCorner.CornerRadius = UDim.new(0, 8)
+iconCorner.Parent = iconButton
+
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "0nkiddGUI"
+screenGui.ResetOnSpawn = false
+screenGui.Enabled = false
+screenGui.Parent = playerGui
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.Size = UDim2.new(0, 500, 0, 500)
+mainFrame.Position = UDim2.new(0.5, -250, 0.5, -250)
+mainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+mainFrame.BorderSizePixel = 0
+mainFrame.Parent = screenGui
+
+local background = Instance.new("ImageLabel")
+background.Name = "Background"
+background.Size = UDim2.new(1, 0, 1, 0)
+background.BackgroundTransparency = 1
+background.Image = "rbxassetid://131917032785234"
+background.ScaleType = Enum.ScaleType.Crop
+background.Parent = mainFrame
+
+local backgroundOverlay = Instance.new("Frame")
+backgroundOverlay.Name = "Overlay"
+backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
+backgroundOverlay.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+backgroundOverlay.BackgroundTransparency = 0.7
+backgroundOverlay.Parent = mainFrame
+
+local mainCorner = Instance.new("UICorner")
+mainCorner.CornerRadius = UDim.new(0, 12)
+mainCorner.Parent = mainFrame
+
+local outerBorder = Instance.new("Frame")
+outerBorder.Name = "OuterBorder"
+outerBorder.Size = UDim2.new(1, 6, 1, 6)
+outerBorder.Position = UDim2.new(0, -3, 0, -3)
+outerBorder.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+outerBorder.BorderSizePixel = 0
+outerBorder.ZIndex = 0
+outerBorder.Parent = mainFrame
+
+local outerCorner = Instance.new("UICorner")
+outerCorner.CornerRadius = UDim.new(0, 14)
+outerCorner.Parent = outerBorder
+
+local titleBar = Instance.new("Frame")
+titleBar.Name = "TitleBar"
+titleBar.Size = UDim2.new(1, 0, 0, 50)
+titleBar.Position = UDim2.new(0, 0, 0, 0)
+titleBar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+titleBar.BackgroundTransparency = 0.3
+titleBar.BorderSizePixel = 0
+titleBar.ZIndex = 3
+titleBar.Parent = mainFrame
+
+local titleAccent = Instance.new("Frame")
+titleAccent.Name = "TitleAccent"
+titleAccent.Size = UDim2.new(1, 0, 0, 4)
+titleAccent.Position = UDim2.new(0, 0, 0, 0)
+titleAccent.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+titleAccent.BorderSizePixel = 0
+titleAccent.ZIndex = 3
+titleAccent.Parent = titleBar
+
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Name = "TitleLabel"
+titleLabel.Size = UDim2.new(1, -100, 1, 0)
+titleLabel.Position = UDim2.new(0, 10, 0, 0)
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = "0nkidd F3X DESTROY GUI V2"
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.TextScaled = true
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.TextSize = 18
+titleLabel.ZIndex = 3
+titleLabel.Parent = titleBar
+
+local closeButton = Instance.new("TextButton")
+closeButton.Name = "CloseButton"
+closeButton.Size = UDim2.new(0, 80, 0, 30)
+closeButton.Position = UDim2.new(1, -90, 0.5, -15)
+closeButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+closeButton.BorderSizePixel = 0
+closeButton.Text = "KAPAT"
+closeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+closeButton.TextScaled = true
+closeButton.Font = Enum.Font.Gotham
+closeButton.TextSize = 12
+closeButton.ZIndex = 3
+closeButton.Parent = titleBar
+
+local closeCorner = Instance.new("UICorner")
+closeCorner.CornerRadius = UDim.new(0, 6)
+closeCorner.Parent = closeButton
+
+local contentFrame = Instance.new("Frame")
+contentFrame.Name = "ContentFrame"
+contentFrame.Size = UDim2.new(1, -20, 1, -70)
+contentFrame.Position = UDim2.new(0, 10, 0, 60)
+contentFrame.BackgroundTransparency = 1
+contentFrame.Parent = mainFrame
+
+local tabsFrame = Instance.new("Frame")
+tabsFrame.Name = "TabsFrame"
+tabsFrame.Size = UDim2.new(1, 0, 0, 40)
+tabsFrame.BackgroundTransparency = 1
+tabsFrame.Parent = contentFrame
+
+local f3xTab = Instance.new("TextButton")
+f3xTab.Name = "F3XTab"
+f3xTab.Size = UDim2.new(0.25, -5, 1, 0)
+f3xTab.Position = UDim2.new(0, 0, 0, 0)
+f3xTab.BackgroundColor3 = Color3.fromRGB(50,50,50)
+f3xTab.BorderSizePixel = 0
+f3xTab.Text = "F3X TOOLS"
+f3xTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+f3xTab.TextScaled = true
+f3xTab.Font = Enum.Font.GothamBold
+f3xTab.TextSize = 14
+f3xTab.Parent = tabsFrame
+
+local realmsTab = Instance.new("TextButton")
+realmsTab.Name = "RealmsTab"
+realmsTab.Size = UDim2.new(0.25, -5, 1, 0)
+realmsTab.Position = UDim2.new(0.25, 5, 0, 0)
+realmsTab.BackgroundColor3 = Color3.fromRGB(50,50,50)
+realmsTab.BorderSizePixel = 0
+realmsTab.Text = "REALMS"
+realmsTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+realmsTab.TextScaled = true
+realmsTab.Font = Enum.Font.GothamBold
+realmsTab.TextSize = 14
+realmsTab.Parent = tabsFrame
+
+local adminTab = Instance.new("TextButton")
+adminTab.Name = "AdminTab"
+adminTab.Size = UDim2.new(0.25, -5, 1, 0)
+adminTab.Position = UDim2.new(0.5, 5, 0, 0)
+adminTab.BackgroundColor3 = Color3.fromRGB(50,50,50)
+adminTab.BorderSizePixel = 0
+adminTab.Text = "ADMIN"
+adminTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+adminTab.TextScaled = true
+adminTab.Font = Enum.Font.GothamBold
+adminTab.TextSize = 14
+adminTab.Parent = tabsFrame
+
+local musicTab = Instance.new("TextButton")
+musicTab.Name = "MusicTab"
+musicTab.Size = UDim2.new(0.25, -5, 1, 0)
+musicTab.Position = UDim2.new(0.75, 5, 0, 0)
+musicTab.BackgroundColor3 = Color3.fromRGB(50,50,50)
+musicTab.BorderSizePixel = 0
+musicTab.Text = "MUSIC"
+musicTab.TextColor3 = Color3.fromRGB(255, 255, 255)
+musicTab.TextScaled = true
+musicTab.Font = Enum.Font.GothamBold
+musicTab.TextSize = 14
+musicTab.Parent = tabsFrame
+
+local tabCorner = Instance.new("UICorner")
+tabCorner.CornerRadius = UDim.new(0, 8)
+tabCorner.Parent = f3xTab
+tabCorner:Clone().Parent = realmsTab
+tabCorner:Clone().Parent = adminTab
+tabCorner:Clone().Parent = musicTab
+
+local f3xScroll = Instance.new("ScrollingFrame")
+f3xScroll.Name = "F3XScroll"
+f3xScroll.Size = UDim2.new(1, 0, 1, -40)
+f3xScroll.Position = UDim2.new(0, 0, 0, 40)
+f3xScroll.BackgroundTransparency = 1
+f3xScroll.BorderSizePixel = 0
+f3xScroll.ScrollBarThickness = 8
+f3xScroll.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 0)
+f3xScroll.Visible = true
+f3xScroll.Parent = contentFrame
+
+local realmsScroll = Instance.new("ScrollingFrame")
+realmsScroll.Name = "RealmsScroll"
+realmsScroll.Size = UDim2.new(1, 0, 1, -40)
+realmsScroll.Position = UDim2.new(0, 0, 0, 40)
+realmsScroll.BackgroundTransparency = 1
+realmsScroll.BorderSizePixel = 0
+realmsScroll.ScrollBarThickness = 8
+realmsScroll.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 0)
+realmsScroll.Visible = false
+realmsScroll.Parent = contentFrame
+
+local adminScroll = Instance.new("ScrollingFrame")
+adminScroll.Name = "AdminScroll"
+adminScroll.Size = UDim2.new(1, 0, 1, -40)
+adminScroll.Position = UDim2.new(0, 0, 0, 40)
+adminScroll.BackgroundTransparency = 1
+adminScroll.BorderSizePixel = 0
+adminScroll.ScrollBarThickness = 8
+adminScroll.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 0)
+adminScroll.Visible = false
+adminScroll.Parent = contentFrame
+
+local musicScroll = Instance.new("ScrollingFrame")
+musicScroll.Name = "MusicScroll"
+musicScroll.Size = UDim2.new(1, 0, 1, -40)
+musicScroll.Position = UDim2.new(0, 0, 0, 40)
+musicScroll.BackgroundTransparency = 1
+musicScroll.BorderSizePixel = 0
+musicScroll.ScrollBarThickness = 8
+musicScroll.ScrollBarImageColor3 = Color3.fromRGB(255, 255, 0)
+musicScroll.Visible = false
+musicScroll.Parent = contentFrame
+
+local f3xLayout = Instance.new("UIGridLayout")
+f3xLayout.CellSize = UDim2.new(1, -10, 0, 45)
+f3xLayout.CellPadding = UDim2.new(0, 5, 0, 5)
+f3xLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+f3xLayout.SortOrder = Enum.SortOrder.LayoutOrder
+f3xLayout.Parent = f3xScroll
+
+local realmsLayout = Instance.new("UIGridLayout")
+realmsLayout.CellSize = UDim2.new(1, -10, 0, 45)
+realmsLayout.CellPadding = UDim2.new(0, 5, 0, 5)
+realmsLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+realmsLayout.SortOrder = Enum.SortOrder.LayoutOrder
+realmsLayout.Parent = realmsScroll
+
+local adminLayout = Instance.new("UIGridLayout")
+adminLayout.CellSize = UDim2.new(1, -10, 0, 45)
+adminLayout.CellPadding = UDim2.new(0, 5, 0, 5)
+adminLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+adminLayout.SortOrder = Enum.SortOrder.LayoutOrder
+adminLayout.Parent = adminScroll
+
+local musicLayout = Instance.new("UIGridLayout")
+musicLayout.CellSize = UDim2.new(1, -10, 0, 45)
+musicLayout.CellPadding = UDim2.new(0, 5, 0, 5)
+musicLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+musicLayout.SortOrder = Enum.SortOrder.LayoutOrder
+musicLayout.Parent = musicScroll
+
+local function createButton(parent, text, callback)
+    local button = Instance.new("TextButton")
+    button.Name = text
+    button.Size = UDim2.new(1, 0, 0, 45)
+    button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+    button.BackgroundTransparency = 0.2
+    button.BorderSizePixel = 0
+    button.Text = text
+    button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    button.TextScaled = true
+    button.Font = Enum.Font.Gotham
+    button.TextSize = 14
+    button.Parent = parent
+
+    local buttonCorner = Instance.new("UICorner")
+    buttonCorner.CornerRadius = UDim.new(0, 8)
+    buttonCorner.Parent = button
+
+    local buttonBorder = Instance.new("Frame")
+    buttonBorder.Name = "Border"
+    buttonBorder.Size = UDim2.new(1, 2, 1, 2)
+    buttonBorder.Position = UDim2.new(0, -1, 0, -1)
+    buttonBorder.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+    buttonBorder.BorderSizePixel = 0
+    buttonBorder.ZIndex = -1
+    buttonBorder.Parent = button
+
+    local borderCorner = Instance.new("UICorner")
+    borderCorner.CornerRadius = UDim.new(0, 9)
+    borderCorner.Parent = buttonBorder
+
+    button.MouseEnter:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+        buttonBorder.BackgroundColor3 = Color3.fromRGB(255, 255, 100)
+    end)
+
+    button.MouseLeave:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+        buttonBorder.BackgroundColor3 = Color3.fromRGB(255, 255, 0)
+    end)
+
+    if callback then
+        button.MouseButton1Click:Connect(callback)
+    end
+
+    return button
+end
+
+local function getF3XTool()
+    local p = game.Players.LocalPlayer
+    local char = p.Character
+    local backpack = p.Backpack
+    for _, v in ipairs(backpack:GetChildren()) do
+        if v:FindFirstChild("SyncAPI") then
+            return v
+        end
+    end
+    if char then
+        for _, v in ipairs(char:GetChildren()) do
+            if v:FindFirstChild("SyncAPI") then
+                return v
+            end
+        end
+    end
+    return nil
+end
+
+local function createSkybox(textureId)
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local serverEndpoint = f3x.SyncAPI.ServerEndpoint
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    local position = hrp.CFrame.Position + Vector3.new(0, 10, 0)
+    local skyPart = serverEndpoint:InvokeServer("CreatePart", "Normal", CFrame.new(position), workspace)
+    serverEndpoint:InvokeServer("CreateMeshes", { { Part = skyPart } })
+    serverEndpoint:InvokeServer("SyncMesh", { { Part = skyPart, MeshId = "rbxassetid://111891702759441" } })
+    serverEndpoint:InvokeServer("SyncMesh", { { Part = skyPart, TextureId = "rbxassetid://"..tostring(textureId) } })
+    serverEndpoint:InvokeServer("SyncMesh", { { Part = skyPart, Scale = Vector3.new(10000, 10000, 10000) } })
+    serverEndpoint:InvokeServer("SetLocked", { skyPart }, true)
+    serverEndpoint:InvokeServer("SetName", { skyPart }, "0nkiddSky")
+end
+
+local function decalSpam(textureId)
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local serverEndpoint = f3x.SyncAPI.ServerEndpoint
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") or v:IsA("UnionOperation") then
+            task.spawn(function()
+                local faces = {Enum.NormalId.Front, Enum.NormalId.Back, Enum.NormalId.Left, Enum.NormalId.Right, Enum.NormalId.Top, Enum.NormalId.Bottom}
+                for _, face in ipairs(faces) do
+                    serverEndpoint:InvokeServer("CreateTextures", { { Part = v, Face = face, TextureType = "Decal" } })
+                    serverEndpoint:InvokeServer("SyncTexture", { { Part = v, Face = face, TextureType = "Decal", Texture = "rbxassetid://"..tostring(textureId) } })
+                end
+            end)
+        end
+    end
+end
+
+createButton(f3xScroll, "Skybox 1", function()
+    local RequestCommand = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    RequestCommand:InvokeServer(";btools")
+    RequestCommand:InvokeServer(";fogcolor black")
+    task.wait(0.5)
+    createSkybox("131917032785234")
+end)
+
+createButton(f3xScroll, "Skybox 2", function()
+    local RequestCommand = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    RequestCommand:InvokeServer(";btools")
+    RequestCommand:InvokeServer(";fogcolor black")
+    task.wait(0.5)
+    createSkybox("131917032785234")
+end)
+
+createButton(f3xScroll, "Skybox 3", function()
+    local RequestCommand = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    RequestCommand:InvokeServer(";btools")
+    RequestCommand:InvokeServer(";fogcolor black")
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+    local char = player.Character
+    if not char then return end
+    local hrp = char:FindFirstChild("HumanoidRootPart")
+    if not hrp then return end
+    local cf = hrp.CFrame + Vector3.new(0, 5, 0)
+    local part = remote:InvokeServer("CreatePart", "Normal", cf, workspace)
+    remote:InvokeServer("CreateMeshes", { { Part = part } })
+    remote:InvokeServer("SyncMesh", { { Part = part, MeshId = "rbxassetid://111891702759441", TextureId = "rbxassetid://121255560184231", Scale = Vector3.new(10000,10000,10000) } })
+    remote:InvokeServer("SetLocked", { part }, true)
+end)
+
+createButton(f3xScroll, "Decal spam", function()
+    local RequestCommand = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    RequestCommand:InvokeServer(";btools")
+    task.wait(0.5)
+    decalSpam("131917032785234")
+end)
+
+createButton(f3xScroll, "Decal spam 2", function()
+    local RequestCommand = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    RequestCommand:InvokeServer(";btools")
+    task.wait(0.5)
+    decalSpam("122891033183126")
+end)
+
+createButton(f3xScroll, "Decal Spam 3", function()
+    local RequestCommand = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    RequestCommand:InvokeServer(";btools")
+    task.wait(0.2)
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Part") then
+            task.spawn(function()
+                local faces = {Enum.NormalId.Front,Enum.NormalId.Back,Enum.NormalId.Right,Enum.NormalId.Left,Enum.NormalId.Top,Enum.NormalId.Bottom}
+                for _, face in ipairs(faces) do
+                    remote:InvokeServer("CreateTextures", { { Part = v, Face = face, TextureType = "Decal" } })
+                    remote:InvokeServer("SyncTexture", { { Part = v, Face = face, TextureType = "Decal", Texture = "rbxassetid://104235488875041" } })
+                end
+            end)
+        end
+    end
+end)
+
+createButton(f3xScroll, "Big Baseplate", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+    local cf = CFrame.new(0, -5, 0)
+    local bp = remote:InvokeServer("CreatePart", "Normal", cf, workspace)
+    remote:InvokeServer("SyncResize", { { Part = bp, CFrame = cf, Size = Vector3.new(10000,10,10000) } })
+    remote:InvokeServer("SyncMaterial", { { Part = bp, Material = Enum.Material.Grass } })
+    remote:InvokeServer("SyncColor", { { Part = bp, Color = Color3.fromRGB(0,200,0) } })
+    remote:InvokeServer("SetLocked", { bp }, true)
+end)
+
+createButton(f3xScroll, "Diagonal Map", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+    local cf = CFrame.new(0,0,0) * CFrame.Angles(0, math.rad(45), math.rad(45))
+    local p = remote:InvokeServer("CreatePart", "Normal", cf, workspace)
+    remote:InvokeServer("SyncResize", { { Part = p, CFrame = cf, Size = Vector3.new(1000,50,1000) } })
+    remote:InvokeServer("SyncMaterial", { { Part = p, Material = Enum.Material.Neon } })
+    remote:InvokeServer("SyncColor", { { Part = p, Color = Color3.fromRGB(0,255,255) } })
+    remote:InvokeServer("SetLocked", { p }, true)
+end)
+
+createButton(f3xScroll, "Happy House", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+
+    local baseCF = CFrame.new(0,0,0)
+    local base = remote:InvokeServer("CreatePart","Normal",baseCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=base,CFrame=baseCF,Size=Vector3.new(500,5,500)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=base,Material=Enum.Material.Grass} })
+    remote:InvokeServer("SetLocked",{base},true)
+
+    local floorCF = CFrame.new(0,2.5,0)
+    local floor = remote:InvokeServer("CreatePart","Normal",floorCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=floor,CFrame=floorCF,Size=Vector3.new(40,1,40)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=floor,Material=Enum.Material.WoodPlanks} })
+    remote:InvokeServer("SetLocked",{floor},true)
+
+    local backCF = CFrame.new(0,10,-20)
+    local back = remote:InvokeServer("CreatePart","Normal",backCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=back,CFrame=backCF,Size=Vector3.new(40,20,2)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=back,Material=Enum.Material.Brick} })
+    remote:InvokeServer("SyncColor",{ {Part=back,Color=Color3.fromRGB(200,200,200)} })
+    remote:InvokeServer("SetLocked",{back},true)
+
+    local frontCF = CFrame.new(0,10,20)
+    local front = remote:InvokeServer("CreatePart","Normal",frontCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=front,CFrame=frontCF,Size=Vector3.new(40,20,2)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=front,Material=Enum.Material.Brick} })
+    remote:InvokeServer("SyncColor",{ {Part=front,Color=Color3.fromRGB(200,200,200)} })
+    remote:InvokeServer("SetLocked",{front},true)
+
+    local leftCF = CFrame.new(-20,10,0)
+    local left = remote:InvokeServer("CreatePart","Normal",leftCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=left,CFrame=leftCF,Size=Vector3.new(2,20,40)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=left,Material=Enum.Material.Brick} })
+    remote:InvokeServer("SyncColor",{ {Part=left,Color=Color3.fromRGB(200,200,200)} })
+    remote:InvokeServer("SetLocked",{left},true)
+
+    local rightCF = CFrame.new(20,10,0)
+    local right = remote:InvokeServer("CreatePart","Normal",rightCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=right,CFrame=rightCF,Size=Vector3.new(2,20,40)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=right,Material=Enum.Material.Brick} })
+    remote:InvokeServer("SyncColor",{ {Part=right,Color=Color3.fromRGB(200,200,200)} })
+    remote:InvokeServer("SetLocked",{right},true)
+
+    local roofCF = CFrame.new(0,21,0)
+    local roof = remote:InvokeServer("CreatePart","Normal",roofCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=roof,CFrame=roofCF,Size=Vector3.new(42,2,42)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=roof,Material=Enum.Material.Wood} })
+    remote:InvokeServer("SyncColor",{ {Part=roof,Color=Color3.fromRGB(150,100,50)} })
+    remote:InvokeServer("SetLocked",{roof},true)
+
+    local doorCF = CFrame.new(0,5,19)
+    local door = remote:InvokeServer("CreatePart","Normal",doorCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=door,CFrame=doorCF,Size=Vector3.new(8,10,1)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=door,Material=Enum.Material.Wood} })
+    remote:InvokeServer("SyncColor",{ {Part=door,Color=Color3.fromRGB(100,70,30)} })
+    remote:InvokeServer("SetLocked",{door},true)
+
+    local w1CF = CFrame.new(-19,10,0)
+    local w1 = remote:InvokeServer("CreatePart","Normal",w1CF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=w1,CFrame=w1CF,Size=Vector3.new(1,8,12)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=w1,Material=Enum.Material.Glass} })
+    remote:InvokeServer("SetLocked",{w1},true)
+
+    local w2CF = CFrame.new(19,10,0)
+    local w2 = remote:InvokeServer("CreatePart","Normal",w2CF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=w2,CFrame=w2CF,Size=Vector3.new(1,8,12)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=w2,Material=Enum.Material.Glass} })
+    remote:InvokeServer("SetLocked",{w2},true)
+end)
+
+createButton(f3xScroll, "Islands", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+
+    local positions = {
+        Vector3.new(-40,0,-40), Vector3.new(0,0,-40), Vector3.new(40,0,-40),
+        Vector3.new(-40,0,0), Vector3.new(0,0,0), Vector3.new(40,0,0),
+        Vector3.new(-40,0,40), Vector3.new(0,0,40), Vector3.new(40,0,40)
+    }
+    for _, pos in pairs(positions) do
+        local cf = CFrame.new(pos)
+        local p = remote:InvokeServer("CreatePart","Normal",cf,workspace)
+        remote:InvokeServer("SyncResize",{ {Part=p,CFrame=cf,Size=Vector3.new(20,5,20)} })
+        remote:InvokeServer("SyncMaterial",{ {Part=p,Material=Enum.Material.Grass} })
+        local r = math.random(50,200); local g = math.random(50,200); local b = math.random(50,200)
+        remote:InvokeServer("SyncColor",{ {Part=p,Color=Color3.fromRGB(r,g,b)} })
+        remote:InvokeServer("SetLocked",{p},true)
+    end
+end)
+
+createButton(f3xScroll, "0nkidd Favorite Map", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+
+    local mainCF = CFrame.new(0,0,0) * CFrame.Angles(0,0,math.rad(45))
+    local mainP = remote:InvokeServer("CreatePart","Normal",mainCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=mainP,CFrame=mainCF,Size=Vector3.new(300,10,300)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=mainP,Material=Enum.Material.Neon} })
+    remote:InvokeServer("SyncColor",{ {Part=mainP,Color=Color3.fromRGB(255,100,0)} })
+    remote:InvokeServer("SetLocked",{mainP},true)
+
+    local radius = 100
+    local num = 8
+    local colors = {
+        Color3.fromRGB(255,0,0), Color3.fromRGB(255,127,0), Color3.fromRGB(255,255,0),
+        Color3.fromRGB(0,255,0), Color3.fromRGB(0,0,255), Color3.fromRGB(75,0,130),
+        Color3.fromRGB(148,0,211), Color3.fromRGB(255,0,255)
+    }
+    for i=1,num do
+        local angle = (i/num)*math.pi*2
+        local x = math.cos(angle)*radius
+        local z = math.sin(angle)*radius
+        local cf = CFrame.new(x,20,z) * CFrame.Angles(0,0,math.rad(45))
+        local p = remote:InvokeServer("CreatePart","Normal",cf,workspace)
+        remote:InvokeServer("SyncResize",{ {Part=p,CFrame=cf,Size=Vector3.new(30,5,30)} })
+        remote:InvokeServer("SyncMaterial",{ {Part=p,Material=Enum.Material.Neon} })
+        remote:InvokeServer("SyncColor",{ {Part=p,Color=colors[i] or Color3.new(1,1,1)} })
+        remote:InvokeServer("SetLocked",{p},true)
+    end
+end)
+
+createButton(f3xScroll, "0nkidd Base", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    Request:InvokeServer(";fogcolor black")
+    Request:InvokeServer(";time 12")
+    task.wait(1)
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local serverEndpoint = f3x.SyncAPI.ServerEndpoint
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") or v:IsA("UnionOperation") or v:IsA("Model") then
+            task.spawn(function() pcall(function() serverEndpoint:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(2)
+    local base = serverEndpoint:InvokeServer("CreatePart","Normal",CFrame.new(0,0,0),workspace)
+    serverEndpoint:InvokeServer("SyncResize",{ {Part=base,CFrame=CFrame.new(0,0,0),Size=Vector3.new(300,5,300)} })
+    serverEndpoint:InvokeServer("SyncColor",{ {Part=base,Color=Color3.fromRGB(0,0,0),UnionColoring=false} })
+    serverEndpoint:InvokeServer("SetLocked",{base},true)
+    serverEndpoint:InvokeServer("SetName",{base},"0nkiddBaseplate")
+end)
+
+createButton(f3xScroll, "Delete All", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    task.wait(0.3)
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") or v:IsA("UnionOperation") then
+            task.spawn(function() remote:InvokeServer("Remove", {v}) end)
+        end
+    end
+end)
+
+createButton(f3xScroll, "DESTROY FOR EMERGENCY", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools me")
+    Request:InvokeServer(";fogcolor black")
+    Request:InvokeServer(";time 0")
+    task.wait(1)
+    local f3x = getF3XTool()
+    if not f3x then return end
+    local remote = f3x.SyncAPI.ServerEndpoint
+    for _, v in ipairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") or v:IsA("UnionOperation") or v:IsA("Model") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(2)
+    local base = remote:InvokeServer("CreatePart","Normal",CFrame.new(0,0,0),workspace)
+    remote:InvokeServer("SyncResize",{ {Part=base,CFrame=CFrame.new(0,0,0),Size=Vector3.new(500,5,500)} })
+    remote:InvokeServer("SyncColor",{ {Part=base,Color=Color3.fromRGB(100,100,100),UnionColoring=false} })
+    remote:InvokeServer("SetLocked",{base},true)
+    remote:InvokeServer("SetName",{base},"Baseplate")
+end)
+
+-- ====== REALMS TAB (apenas 0nkidd Realm e 0nkidd Realm v2) ======
+createButton(realmsScroll, "0nkidd Realm", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local tool = getF3XTool()
+    if not tool then return end
+    local remote = tool.SyncAPI.ServerEndpoint
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+    local baseCF = CFrame.new(0,0,0)
+    local base = remote:InvokeServer("CreatePart","Normal",baseCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=base,CFrame=baseCF,Size=Vector3.new(500,5,500)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=base,Material=Enum.Material.Neon} })
+    remote:InvokeServer("SyncColor",{ {Part=base,Color=Color3.fromRGB(0,150,255)} })
+    remote:InvokeServer("SetLocked",{base},true)
+
+    local angleCF = CFrame.new(0,20,0) * CFrame.Angles(0,0,math.rad(70))
+    local p = remote:InvokeServer("CreatePart","Normal",angleCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=p,CFrame=angleCF,Size=Vector3.new(100,200,10)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=p,Material=Enum.Material.Neon} })
+    remote:InvokeServer("SyncColor",{ {Part=p,Color=Color3.fromRGB(255,0,150)} })
+    remote:InvokeServer("CreateTextures",{ {Part=p,Face=Enum.NormalId.Front,TextureType="Decal"} })
+    remote:InvokeServer("SyncTexture",{ {Part=p,Face=Enum.NormalId.Front,TextureType="Decal",Texture="rbxassetid://121255560184231"} })
+    remote:InvokeServer("SetLocked",{p},true)
+
+    local skyCF = CFrame.new(0,5,0)
+    local sky = remote:InvokeServer("CreatePart","Normal",skyCF,workspace)
+    remote:InvokeServer("CreateMeshes",{ {Part=sky} })
+    remote:InvokeServer("SyncMesh",{ {Part=sky,MeshId="rbxassetid://111891702759441",TextureId="rbxassetid://104235488875041",Scale=Vector3.new(10000,10000,10000)} })
+    remote:InvokeServer("SetLocked",{sky},true)
+
+    local char = player.Character
+    if char and char.PrimaryPart then
+        char:SetPrimaryPartCFrame(CFrame.new(0,10,0))
+    end
+    Request:InvokeServer(";music 134884767490882")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(realmsScroll, "0nkidd Realm v2", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+    local tool = getF3XTool()
+    if not tool then return end
+    local remote = tool.SyncAPI.ServerEndpoint
+    for _,v in workspace:GetDescendants() do
+        if v:IsA("Part") or v:IsA("MeshPart") or v:IsA("UnionOperation") then
+            task.spawn(function() pcall(function() remote:InvokeServer("Remove", {v}) end) end)
+        end
+    end
+    task.wait(1)
+    local baseCF = CFrame.new(0,0,0)
+    local base = remote:InvokeServer("CreatePart","Normal",baseCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=base,CFrame=baseCF,Size=Vector3.new(100,5,100)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=base,Material=Enum.Material.Neon} })
+    remote:InvokeServer("SyncColor",{ {Part=base,Color=Color3.fromRGB(0,150,255)} })
+    remote:InvokeServer("SetLocked",{base},true)
+
+    local wallCF = CFrame.new(0,15,20)
+    local wall = remote:InvokeServer("CreatePart","Normal",wallCF,workspace)
+    remote:InvokeServer("SyncResize",{ {Part=wall,CFrame=wallCF,Size=Vector3.new(50,30,2)} })
+    remote:InvokeServer("SyncMaterial",{ {Part=wall,Material=Enum.Material.Neon} })
+    remote:InvokeServer("SyncColor",{ {Part=wall,Color=Color3.fromRGB(255,0,150)} })
+    remote:InvokeServer("CreateTextures",{ {Part=wall,Face=Enum.NormalId.Front,TextureType="Decal"} })
+    remote:InvokeServer("SyncTexture",{ {Part=wall,Face=Enum.NormalId.Front,TextureType="Decal",Texture="rbxassetid://122891033183126"} })
+    remote:InvokeServer("SetLocked",{wall},true)
+
+    local char = player.Character
+    if char and char.PrimaryPart then
+        char:SetPrimaryPartCFrame(CFrame.new(0,10,0))
+    end
+end)
+
+-- ====== ADMIN TAB (todos os comandos admin dos 3 scripts) ======
+createButton(adminScroll, "ForceField", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";ff")
+end)
+
+createButton(adminScroll, "Bring All", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";bring all")
+end)
+
+createButton(adminScroll, "Kill All", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";kill all")
+end)
+
+createButton(adminScroll, "Kill Others", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";kill others")
+end)
+
+createButton(adminScroll, "Explode Others", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";explode others")
+end)
+
+createButton(adminScroll, "Shutdown", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";shutdown 0nkidd destroyed this server!")
+end)
+
+createButton(adminScroll, "R6 All", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";r6 all")
+end)
+
+createButton(adminScroll, "Avatars 0nkidd", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";char all 0nkidd")
+end)
+
+createButton(adminScroll, "Title", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";title all join team 0nkidd today!")
+end)
+
+createButton(adminScroll, "CmdBar2", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";cmdbar2")
+end)
+
+createButton(adminScroll, "Sword All", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";sword all")
+end)
+
+createButton(adminScroll, "Infinite Yield", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+
+-- ====== MUSICS TAB (todos os comandos de música) ======
+createButton(musicScroll, "0nkidd Theme", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 1839246711")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "Tubers Moan", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 6129291390")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "Crab Rave", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 5410086218")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "Phonk", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 5356466111")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "Play Music 1", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 27697743")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "Play Music 2", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 1847661821")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "Stop Music", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";unmusic")
+end)
+
+local function updateCanvasSizes()
+    f3xScroll.CanvasSize   = UDim2.new(0, 0, 0, f3xLayout.AbsoluteContentSize.Y + 20)
+    realmsScroll.CanvasSize= UDim2.new(0, 0, 0, realmsLayout.AbsoluteContentSize.Y + 20)
+    adminScroll.CanvasSize = UDim2.new(0, 0, 0, adminLayout.AbsoluteContentSize.Y + 20)
+    musicScroll.CanvasSize = UDim2.new(0, 0, 0, musicLayout.AbsoluteContentSize.Y + 20)
+end
+
+f3xLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvasSizes)
+realmsLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvasSizes)
+adminLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvasSizes)
+musicLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(updateCanvasSizes)
+
+f3xTab.MouseButton1Click:Connect(function()
+    f3xScroll.Visible = true
+    realmsScroll.Visible = false
+    adminScroll.Visible = false
+    musicScroll.Visible = false
+end)
+
+realmsTab.MouseButton1Click:Connect(function()
+    f3xScroll.Visible = false
+    realmsScroll.Visible = true
+    adminScroll.Visible = false
+    musicScroll.Visible = false
+end)
+
+adminTab.MouseButton1Click:Connect(function()
+    f3xScroll.Visible = false
+    realmsScroll.Visible = false
+    adminScroll.Visible = true
+    musicScroll.Visible = false
+end)
+
+musicTab.MouseButton1Click:Connect(function()
+    f3xScroll.Visible = false
+    realmsScroll.Visible = false
+    adminScroll.Visible = false
+    musicScroll.Visible = true
+end)
+
+iconButton.MouseButton1Click:Connect(function()
+    screenGui.Enabled = not screenGui.Enabled
+end)
+
+closeButton.MouseButton1Click:Connect(function()
+    screenGui.Enabled = false
+end)
+
+local dragging = false
+local dragInput, dragStart, startPos
+local function dragUpdate(input)
+    local delta = input.Position - dragStart
+    mainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+titleBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        dragging = true
+        dragStart = input.Position
+        startPos = mainFrame.Position
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                dragging = false
+            end
+        end)
+    end
+end)
+
+titleBar.InputChanged:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseMovement then
+        dragInput = input
+    end
+end)
+
+game:GetService("UserInputService").InputChanged:Connect(function(input)
+    if input == dragInput and dragging then
+        dragUpdate(input)
+    end
+end)
+
+updateCanvasSizes()
