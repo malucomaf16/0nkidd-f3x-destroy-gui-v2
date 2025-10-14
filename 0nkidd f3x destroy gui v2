@@ -3,7 +3,7 @@
 -- Background: rbxthumb://type=Asset&id=131917032785234&w=420&h=420
 
 
-
+-- GUI
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
@@ -122,6 +122,8 @@ closeButton.Font = Enum.Font.Gotham
 closeButton.TextSize = 12
 closeButton.ZIndex = 3
 closeButton.Parent = titleBar
+
+-- TABS
 
 local closeCorner = Instance.new("UICorner")
 closeCorner.CornerRadius = UDim.new(0, 6)
@@ -319,6 +321,8 @@ local function createButton(parent, text, callback)
     return button
 end
 
+-- F3X TAB
+
 local function getF3XTool()
     local p = game.Players.LocalPlayer
     local char = p.Character
@@ -378,7 +382,7 @@ createButton(f3xScroll, "Skybox 1", function()
     RequestCommand:InvokeServer(";btools")
     RequestCommand:InvokeServer(";fogcolor black")
     task.wait(0.5)
-    createSkybox("131917032785234")
+    createSkybox("122891033183126")
 end)
 
 createButton(f3xScroll, "Skybox 2", function()
@@ -691,7 +695,7 @@ createButton(f3xScroll, "DESTROY FOR EMERGENCY", function()
     remote:InvokeServer("SetName",{base},"Baseplate")
 end)
 
--- ====== REALMS TAB (apenas 0nkidd Realm e 0nkidd Realm v2) ======
+-- ====== REALMS TAB ======
 createButton(realmsScroll, "0nkidd Realm", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";btools")
@@ -768,7 +772,7 @@ createButton(realmsScroll, "0nkidd Realm v2", function()
     end
 end)
 
--- ====== ADMIN TAB (todos os comandos admin dos 3 scripts) ======
+-- ====== ADMIN TAB ======
 createButton(adminScroll, "ForceField", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";ff")
@@ -809,9 +813,10 @@ createButton(adminScroll, "Avatars 0nkidd", function()
     Request:InvokeServer(";char all 0nkidd")
 end)
 
-createButton(adminScroll, "Title", function()
+createButton(adminScroll, "Titles", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";title all join team 0nkidd today!")
+	Request:InvokeServer(";titleg me 0nkidd")
 end)
 
 createButton(adminScroll, "CmdBar2", function()
@@ -828,7 +833,11 @@ createButton(adminScroll, "Infinite Yield", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
 
--- ====== MUSICS TAB (todos os comandos de música) ======
+createButton(adminScroll, "c00lgui F3X", function()
+    loadstring(game:HttpGet("https://github.com/malucomaf16/c00lgui-hdadmin/blob/main/c00lgui-hdadmin.lua"))()
+end)
+
+-- ====== MUSICS TAB ======
 createButton(musicScroll, "0nkidd Theme", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";music 1839246711")
@@ -853,13 +862,13 @@ createButton(musicScroll, "Phonk", function()
     Request:InvokeServer(";volume inf")
 end)
 
-createButton(musicScroll, "Play Music 1", function()
+createButton(musicScroll, "SSS", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-    Request:InvokeServer(";music 27697743")
+    Request:InvokeServer(";music 71956674693421")
     Request:InvokeServer(";volume inf")
 end)
 
-createButton(musicScroll, "Play Music 2", function()
+createButton(musicScroll, "won't stop us", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";music 1847661821")
     Request:InvokeServer(";volume inf")
