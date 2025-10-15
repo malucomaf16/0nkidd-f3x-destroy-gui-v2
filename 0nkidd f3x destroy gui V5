@@ -1,4 +1,4 @@
---  F3X Destroy GUI
+-- 0nkidd F3X Destroy GUI
 -- Created by K3ngx1RIV
 -- Background: rbxthumb://type=Asset&id=131917032785234&w=420&h=420
 
@@ -674,6 +674,612 @@ createButton(f3xScroll, "DESTROY FOR EMERGENCY", function()
 end)
 
 -- ====== REALMS TAB ======
+createButton(realmsScroll, "666", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools")
+	  local player = game.Players.LocalPlayer
+            local char = player.Character
+            local tool
+            for i,v in player:GetDescendants() do
+                if v.Name == "SyncAPI" then
+                    tool = v.Parent
+                end
+            end
+            for i,v in game.ReplicatedStorage:GetDescendants() do
+                if v.Name == "SyncAPI" then
+                    tool = v.Parent
+                end
+            end
+            --craaa
+            remote = tool.SyncAPI.ServerEndpoint
+            function _(args)
+                remote:InvokeServer(unpack(args))
+            end
+            function SetCollision(part,boolean)
+                local args = {
+                    [1] = "SyncCollision",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["CanCollide"] = boolean
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SetAnchor(boolean,part)
+                local args = {
+                    [1] = "SyncAnchor",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Anchored"] = boolean
+                        }
+                    }
+                }
+                _(args)
+            end
+            function CreatePart(cf,parent)
+                local args = {
+                    [1] = "CreatePart",
+                    [2] = "Normal",
+                    [3] = cf,
+                    [4] = parent
+                }
+                _(args)
+            end
+            function DestroyPart(part)
+                local args = {
+                    [1] = "Remove",
+                    [2] = {
+                        [1] = part
+                    }
+                }
+                _(args)
+            end
+            function MovePart(part,cf)
+                local args = {
+                    [1] = "SyncMove",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["CFrame"] = cf
+                        }
+                    }
+                }
+                _(args)
+            end
+            function Resize(part,size,cf)
+                local args = {
+                    [1] = "SyncResize",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["CFrame"] = cf,
+                            ["Size"] = size
+                        }
+                    }
+                }
+                _(args)
+            end
+            function AddMesh(part)
+                local args = {
+                    [1] = "CreateMeshes",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part
+                        }
+                    }
+                }
+                _(args)
+            end
+         
+            function SetMesh(part,meshid)
+                local args = {
+                    [1] = "SyncMesh",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["MeshId"] = "rbxassetid://"..meshid
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SetTexture(part, texid)
+                local args = {
+                    [1] = "SyncMesh",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["TextureId"] = "rbxassetid://"..texid
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SetName(part, stringg)
+                local args = {
+                    [1] = "SetName",
+                    [2] = {
+                        [1] = part
+                    },
+                    [3] = stringg
+                }
+         
+                _(args)
+            end
+            function MeshResize(part,size)
+                local args = {
+                    [1] = "SyncMesh",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Scale"] = size
+                        }
+                    }
+                }
+                _(args)
+            end
+            function Weld(part1, part2,lead)
+                local args = {
+                    [1] = "CreateWelds",
+                    [2] = {
+                        [1] = part1,
+                        [2] = part2
+                    },
+                    [3] = lead
+                }
+                _(args)
+         
+            end
+            function SetLocked(part,boolean)
+                local args = {
+                    [1] = "SetLocked",
+                    [2] = {
+                        [1] = part
+                    },
+                    [3] = boolean
+                }
+                _(args)
+            end
+            function SetTrans(part,int)
+                local args = {
+                    [1] = "SyncMaterial",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Transparency"] = int
+                        }
+                    }
+                }
+                _(args)
+            end
+            function CreateSpotlight(part)
+                local args = {
+                    [1] = "CreateLights",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["LightType"] = "SpotLight"
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SyncLighting(part,brightness)
+                local args = {
+                    [1] = "SyncLighting",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["LightType"] = "SpotLight",
+                            ["Brightness"] = brightness
+                        }
+                    }
+                }
+                _(args)
+            end
+            function Color(part,color)
+                local args = {
+                    [1] = "SyncColor",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Color"] = color --[[Color3]],
+                            ["UnionColoring"] = false
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SpawnDecal(part,side)
+                local args = {
+                    [1] = "CreateTextures",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Face"] = side,
+                            ["TextureType"] = "Decal"
+                        }
+                    }
+                }
+         
+                _(args)
+            end
+            function AddDecal(part,asset,side)
+                local args = {
+                    [1] = "SyncTexture",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Face"] = side,
+                            ["TextureType"] = "Decal",
+                            ["Texture"] = "rbxassetid://".. asset
+                        }
+                    }
+                }
+                _(args)
+            end
+         
+            function spam(id)
+                for i,v in game.workspace:GetDescendants() do
+                    if v:IsA("BasePart") then
+                        spawn(function()
+                            SetLocked(v,false)
+                            SpawnDecal(v,Enum.NormalId.Front)
+                            AddDecal(v,id,Enum.NormalId.Front)
+         
+                            SpawnDecal(v,Enum.NormalId.Back)
+                            AddDecal(v,id,Enum.NormalId.Back)
+         
+                            SpawnDecal(v,Enum.NormalId.Right)
+                            AddDecal(v,id,Enum.NormalId.Right)
+         
+                            SpawnDecal(v,Enum.NormalId.Left)
+                            AddDecal(v,id,Enum.NormalId.Left)
+         
+                            SpawnDecal(v,Enum.NormalId.Bottom)
+                            AddDecal(v,id,Enum.NormalId.Bottom)
+         
+                            SpawnDecal(v,Enum.NormalId.Top)
+                            AddDecal(v,id,Enum.NormalId.Top)
+                        end)
+                    end
+                end 
+            end
+            spam("75675290120492")
+        wait(1)
+        
+            local player = game.Players.LocalPlayer
+            local char = player.Character
+            local tool
+            for i,v in player:GetDescendants() do
+                if v.Name == "SyncAPI" then
+                    tool = v.Parent
+                end
+            end
+            for i,v in game.ReplicatedStorage:GetDescendants() do
+                if v.Name == "SyncAPI" then
+                    tool = v.Parent
+                end
+            end
+            --craaa
+            remote = tool.SyncAPI.ServerEndpoint
+            function _(args)
+                remote:InvokeServer(unpack(args))
+            end
+            function SetCollision(part,boolean)
+                local args = {
+                    [1] = "SyncCollision",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["CanCollide"] = boolean
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SetAnchor(boolean,part)
+                local args = {
+                    [1] = "SyncAnchor",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Anchored"] = boolean
+                        }
+                    }
+                }
+                _(args)
+            end
+            function CreatePart(cf,parent)
+                local args = {
+                    [1] = "CreatePart",
+                    [2] = "Normal",
+                    [3] = cf,
+                    [4] = parent
+                }
+                _(args)
+            end
+            function DestroyPart(part)
+                local args = {
+                    [1] = "Remove",
+                    [2] = {
+                        [1] = part
+                    }
+                }
+                _(args)
+            end
+            function MovePart(part,cf)
+                local args = {
+                    [1] = "SyncMove",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["CFrame"] = cf
+                        }
+                    }
+                }
+                _(args)
+            end
+            function Resize(part,size,cf)
+                local args = {
+                    [1] = "SyncResize",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["CFrame"] = cf,
+                            ["Size"] = size
+                        }
+                    }
+                }
+                _(args)
+            end
+            function AddMesh(part)
+                local args = {
+                    [1] = "CreateMeshes",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part
+                        }
+                    }
+                }
+                _(args)
+            end
+        
+            function SetMesh(part,meshid)
+                local args = {
+                    [1] = "SyncMesh",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["MeshId"] = "rbxassetid://"..meshid
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SetTexture(part, texid)
+                local args = {
+                    [1] = "SyncMesh",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["TextureId"] = "rbxassetid://"..texid
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SetName(part, stringg)
+                local args = {
+                    [1] = "SetName",
+                    [2] = {
+                        [1] = part
+                    },
+                    [3] = stringg
+                }
+        
+                _(args)
+            end
+            function MeshResize(part,size)
+                local args = {
+                    [1] = "SyncMesh",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Scale"] = size
+                        }
+                    }
+                }
+                _(args)
+            end
+            function Weld(part1, part2,lead)
+                local args = {
+                    [1] = "CreateWelds",
+                    [2] = {
+                        [1] = part1,
+                        [2] = part2
+                    },
+                    [3] = lead
+                }
+                _(args)
+        
+            end
+            function SetLocked(part,boolean)
+                local args = {
+                    [1] = "SetLocked",
+                    [2] = {
+                        [1] = part
+                    },
+                    [3] = boolean
+                }
+                _(args)
+            end
+            function SetTrans(part,int)
+                local args = {
+                    [1] = "SyncMaterial",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Transparency"] = int
+                        }
+                    }
+                }
+                _(args)
+            end
+            function CreateSpotlight(part)
+                local args = {
+                    [1] = "CreateLights",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["LightType"] = "SpotLight"
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SyncLighting(part,brightness)
+                local args = {
+                    [1] = "SyncLighting",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["LightType"] = "SpotLight",
+                            ["Brightness"] = brightness
+                        }
+                    }
+                }
+                _(args)
+            end
+            function Color(part,color)
+                local args = {
+                    [1] = "SyncColor",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Color"] = color --[[Color3]],
+                            ["UnionColoring"] = false
+                        }
+                    }
+                }
+                _(args)
+            end
+            function SpawnDecal(part,side)
+                local args = {
+                    [1] = "CreateTextures",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Face"] = side,
+                            ["TextureType"] = "Decal"
+                        }
+                    }
+                }
+        
+                _(args)
+            end
+            function AddDecal(part,asset,side)
+                local args = {
+                    [1] = "SyncTexture",
+                    [2] = {
+                        [1] = {
+                            ["Part"] = part,
+                            ["Face"] = side,
+                            ["TextureType"] = "Decal",
+                            ["Texture"] = "rbxassetid://".. asset
+                        }
+                    }
+                }
+                _(args)
+            end
+        
+            function Sky(id)
+                e = char.HumanoidRootPart.CFrame.x
+                f = char.HumanoidRootPart.CFrame.y
+                g = char.HumanoidRootPart.CFrame.z
+                CreatePart(CFrame.new(math.floor(e),math.floor(f),math.floor(g)) + Vector3.new(0,6,0),workspace)
+                for i,v in game.Workspace:GetDescendants() do
+                    if v:IsA("BasePart") and v.CFrame.x == math.floor(e) and v.CFrame.z == math.floor(g) then
+                        --spawn(function()
+                        SetName(v,"Sky")
+                        AddMesh(v)
+                        --end)
+                        --spawn(function()
+                        SetMesh(v,"111891702759441")
+                        SetTexture(v,id)
+                        --end)
+                        MeshResize(v,Vector3.new(6000,6000,6000))
+                        SetLocked(v,true)
+                    end
+                end
+            end
+            Sky("75675290120492")
+        wait(1)
+        		local function applyDecorationToPart(part)
+        			local argsCreate = {
+        				[1] = "CreateDecorations",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["DecorationType"] = "Fire"
+        					}
+        				}
+        			}
+        
+        			local argsSync = {
+        				[1] = "SyncDecorate",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["DecorationType"] = "Fire",
+        						["Size"] = 20
+        					}
+        				}
+        			}
+        
+        			local buildingTools = nil
+        			local player = game:GetService("Players").LocalPlayer
+        
+        			-- Search for the tool in Character and Backpack
+        			for _, item in pairs(player.Character:GetChildren()) do
+        				if item:IsA("Tool") and item:FindFirstChild("SyncAPI") then
+        					buildingTools = item
+        					break
+        				end
+        			end
+        
+        			if not buildingTools then
+        				for _, item in pairs(player.Backpack:GetChildren()) do
+        					if item:IsA("Tool") and item:FindFirstChild("SyncAPI") then
+        						buildingTools = item
+        						break
+        					end
+        				end
+        			end
+        
+        			if buildingTools then
+        				buildingTools.SyncAPI.ServerEndpoint:InvokeServer(unpack(argsCreate))
+        				buildingTools.SyncAPI.ServerEndpoint:InvokeServer(unpack(argsSync))
+        			elseif not warned then
+        				warn("Building tool not found")
+        				warned = true
+        			end
+        		end
+        
+        		local function applyDecorationToAllParts(workspaceObject)
+        			for _, obj in pairs(workspaceObject:GetDescendants()) do
+        				if obj:IsA("Part") or obj:IsA("MeshPart") then
+        					applyDecorationToPart(obj)
+        				end
+        			end
+        		end
+        
+        		applyDecorationToAllParts(workspace)
+        end)
+
 createButton(realmsScroll, "0nkidd Realm", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";btools")
@@ -719,7 +1325,7 @@ end)
 createButton(realmsScroll, "Noot Noot !", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";btools ;hg NOOT NOOT !! (remake by 0nkidd)")
-
+    Request:InvokeServer(";music 236932924 ;volume inf ;disco")
 	local player = game.Players.LocalPlayer
 	local char = player.Character
 	local tool
@@ -1728,6 +2334,11 @@ createButton(adminScroll, "Hide all Others GUI'S and HD", function()
 	Request:InvokeServer(";hg Your script menu has been deleted by team 0nkidd!!")
 end)
 
+createButton(adminScroll, "Arrest others", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";jail others ;ice others ;disco ;freeze others ;blur others ;fog 0 0 ;Hg YOU WERE ARRESTED BY team 0nkidd HAHAHHA")
+end)
+
 createButton(adminScroll, "ForceField", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";ff")
@@ -1778,7 +2389,308 @@ createButton(adminScroll, "remove all team", function()
 		RequestCommand:InvokeServer(";removeteam")
 		RequestCommand:InvokeServer(";removeteam")
 		RequestCommand:InvokeServer(";removeteam")
-	end)
+    end)
+
+createButton(adminScroll, "Thomas", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";btools me")
+	            local player = game.Players.LocalPlayer
+        		local char = player.Character
+        		local tool
+        		for i,v in player:GetDescendants() do
+        			if v.Name == "SyncAPI" then
+        				tool = v.Parent
+        			end
+        		end
+        		for i,v in game.ReplicatedStorage:GetDescendants() do
+        			if v.Name == "SyncAPI" then
+        				tool = v.Parent
+        			end
+        		end
+        		--craaa
+        		remote = tool.SyncAPI.ServerEndpoint
+        		function _(args)
+        			remote:InvokeServer(unpack(args))
+        		end
+        		function SetCollision(part,boolean)
+        			local args = {
+        				[1] = "SyncCollision",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["CanCollide"] = boolean
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function SetAnchor(boolean,part)
+        			local args = {
+        				[1] = "SyncAnchor",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["Anchored"] = boolean
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function CreatePart(cf,parent)
+        			local args = {
+        				[1] = "CreatePart",
+        				[2] = "Normal",
+        				[3] = cf,
+        				[4] = parent
+        			}
+        			_(args)
+        		end
+        		function DestroyPart(part)
+        			local args = {
+        				[1] = "Remove",
+        				[2] = {
+        					[1] = part
+        				}
+        			}
+        			_(args)
+        		end
+        		function MovePart(part,cf)
+        			local args = {
+        				[1] = "SyncMove",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["CFrame"] = cf
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function Resize(part,size,cf)
+        			local args = {
+        				[1] = "SyncResize",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["CFrame"] = cf,
+        						["Size"] = size
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function AddMesh(part)
+        			local args = {
+        				[1] = "CreateMeshes",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        
+        		function SetMesh(part,meshid)
+        			local args = {
+        				[1] = "SyncMesh",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["MeshId"] = "rbxassetid://"..meshid
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function SetTexture(part, texid)
+        			local args = {
+        				[1] = "SyncMesh",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["TextureId"] = "rbxassetid://"..texid
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function SetName(part, stringg)
+        			local args = {
+        				[1] = "SetName",
+        				[2] = {
+        					[1] = workspace.Part
+        				},
+        				[3] = stringg
+        			}
+        
+        			_(args)
+        		end
+        		function MeshResize(part,size)
+        			local args = {
+        				[1] = "SyncMesh",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["Scale"] = size
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function Weld(part1, part2,lead)
+        			local args = {
+        				[1] = "CreateWelds",
+        				[2] = {
+        					[1] = part1,
+        					[2] = part2
+        				},
+        				[3] = lead
+        			}
+        			_(args)
+        
+        		end
+        		function SetLocked(part,boolean)
+        			local args = {
+        				[1] = "SetLocked",
+        				[2] = {
+        					[1] = part
+        				},
+        				[3] = boolean
+        			}
+        			_(args)
+        		end
+        		function SetTrans(part,int)
+        			local args = {
+        				[1] = "SyncMaterial",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["Transparency"] = int
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function CreateSpotlight(part)
+        			local args = {
+        				[1] = "CreateLights",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["LightType"] = "SpotLight"
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		function SyncLighting(part,brightness)
+        			local args = {
+        				[1] = "SyncLighting",
+        				[2] = {
+        					[1] = {
+        						["Part"] = part,
+        						["LightType"] = "SpotLight",
+        						["Brightness"] = brightness
+        					}
+        				}
+        			}
+        			_(args)
+        		end
+        		local player = game.Players.LocalPlayer
+        local char = player.Character
+        
+        function xd()
+        spawn(function()
+        local args = {
+            [1] = "SyncMaterial",
+            [2] = {
+                [1] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character.Torso,
+                    ["Transparency"] = 1
+                },
+                [2] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Left Leg"),
+                    ["Transparency"] = 1
+                },
+                [3] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,
+                    ["Transparency"] = 1
+                },
+                [4] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Right Leg"),
+                    ["Transparency"] = 1
+                },
+                [5] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Right Arm"),
+                    ["Transparency"] = 1
+                },
+                [6] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character:FindFirstChild("Left Arm"),
+                    ["Transparency"] = 1
+                },
+                [7] = {
+                    ["Part"] = game:GetService("Players").LocalPlayer.Character.Head,
+                    ["Transparency"] = 1
+                },
+            }
+        }
+        
+        _(args)
+        
+        			end)
+        end
+        
+        function Thomas(player)
+        			SetAnchor(true,char.HumanoidRootPart)
+        			CreatePart(char.HumanoidRootPart.CFrame,char,"Normal")
+        			SetCollision(char.Part,false)
+        			SetLocked(char.Part,false)
+        			Resize(char.Part,Vector3.new(5,5,10),char.HumanoidRootPart.CFrame)
+        			CreateSpotlight(char.Part)
+        			SyncLighting(char.Part,100)
+        			SetLocked(char.HumanoidRootPart,false)
+        			Weld(char.Part,char.HumanoidRootPart,char.Part)
+        			SetAnchor(false,char.Part)
+        			AddMesh(char.Part)
+        			MeshResize(char.Part,Vector3.new(2,2,1.5))
+        			SetMesh(char.Part,"2231280549")
+        			SetTexture(char.Part,"2231280614")
+        			SetAnchor(false,char.HumanoidRootPart)
+        	char.Humanoid.WalkSpeed = 80
+        			local function SFX(id) local s=Instance.new("Sound",char.Torso); s.SoundId = "rbxassetid://"..id; s.Volume = 1; return s; end
+        char.Part.Touched:connect(function(p)
+        	if p.Parent then
+        		if p.Parent:IsA("Model") then
+        			if game.Players:FindFirstChild(p.Parent.Name) then
+        				if p.Parent.Name ~= game.Players.LocalPlayer.Name then
+        				spawn(function()
+        					DestroyPart(game.Players:FindFirstChild(p.Parent.Name).Character.Head)
+        					end)
+        					local Whistle = SFX(475073913)
+        					Whistle:Play()
+        				end
+        			end
+        		end
+        	end
+        end)
+        
+        local Music = SFX(0)
+        Music.Pitch = 1.15
+        Music:Play()
+        					
+        			game:GetService("RunService").RenderStepped:Connect(function()
+        				for i,v in char:GetDescendants() do
+        					if v:IsA("BasePart") then
+        						char.Humanoid.WalkSpeed = 80
+        						v.CanCollide = false
+        					end
+        				end
+        			end)
+        		end
+        		Thomas(player)
+        		xd()
+        end)
 
 createButton(adminScroll, "hint 1", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
@@ -1882,6 +2794,23 @@ createButton(adminScroll, "Destroy players", function()
 	Request:InvokeServer(";hg ENJOY YOUR NEW GAME HAHAHHA")
 end)
 
+createButton(adminScroll, "spam zombies", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+		RequestCommand:InvokeServer(";insert 187789986")
+
+	Wait(1)
+end)
+
 createButton(adminScroll, "Infinite Yield", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
@@ -1915,6 +2844,11 @@ createButton(musicScroll, "Phonk", function()
     Request:InvokeServer(";volume inf")
 end)
 
+createButton(musicScroll, "RAMPAGE", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 100379372434844 ;volume inf")
+end)
+
 createButton(musicScroll, "this is sparta (remix)", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";music 140240856766854 ;pitch 0.20 ;volume inf")
@@ -1941,6 +2875,12 @@ end)
 createButton(musicScroll, "won't stop us", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";music 1847661821")
+    Request:InvokeServer(";volume inf")
+end)
+
+createButton(musicScroll, "cofe (troll)", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 124649849731806")
     Request:InvokeServer(";volume inf")
 end)
 
