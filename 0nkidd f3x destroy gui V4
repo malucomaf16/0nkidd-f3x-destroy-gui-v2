@@ -1241,6 +1241,11 @@ createButton(adminScroll, "hint 2", function()
     Request:InvokeServer(";hg Team 0nkidd destroyed this game hahahha !!")
 end)
 
+createButton(adminScroll, "hint 3", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";hg Enjoy your new game skid hahahha!!")
+end)
+
 createButton(adminScroll, "Bring All", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";bring all")
