@@ -1,4 +1,4 @@
--- 0nkidd F3X Destroy GUI
+--  F3X Destroy GUI
 -- Created by K3ngx1RIV
 -- Background: rbxthumb://type=Asset&id=131917032785234&w=420&h=420
 
@@ -32,7 +32,7 @@ iconCorner.CornerRadius = UDim.new(0, 8)
 iconCorner.Parent = iconButton
 
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "0nkiddGUI"
+screenGui.Name = "GUI"
 screenGui.ResetOnSpawn = false
 screenGui.Enabled = false
 screenGui.Parent = playerGui
@@ -101,7 +101,7 @@ titleLabel.Name = "TitleLabel"
 titleLabel.Size = UDim2.new(1, -100, 1, 0)
 titleLabel.Position = UDim2.new(0, 10, 0, 0)
 titleLabel.BackgroundTransparency = 1
-titleLabel.Text = "0nkidd F3X DESTROY GUI V3"
+titleLabel.Text = "0NKIDD F3X DESTROY GUI V4"
 titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleLabel.TextScaled = true
 titleLabel.Font = Enum.Font.GothamBold
@@ -357,7 +357,7 @@ local function createSkybox(textureId)
     serverEndpoint:InvokeServer("SyncMesh", { { Part = skyPart, TextureId = "rbxassetid://"..tostring(textureId) } })
     serverEndpoint:InvokeServer("SyncMesh", { { Part = skyPart, Scale = Vector3.new(10000, 10000, 10000) } })
     serverEndpoint:InvokeServer("SetLocked", { skyPart }, true)
-    serverEndpoint:InvokeServer("SetName", { skyPart }, "0nkiddSky")
+    serverEndpoint:InvokeServer("SetName", { skyPart }, "Sky")
 end
 
 local function decalSpam(textureId)
@@ -792,7 +792,7 @@ createButton(realmsScroll, "0nkidd military base", function()
         {["Part"] = baseplate, ["Color"] = Color3.fromRGB(0, 0, 0), ["UnionColoring"] = false}
     })
     serverEndpoint:InvokeServer("SetLocked", {baseplate}, true)
-    serverEndpoint:InvokeServer("SetName", {baseplate}, "0nkiddBaseplate")
+    serverEndpoint:InvokeServer("SetName", {baseplate}, "Baseplate")
     
     -- SKYBOX 
     local skyPosition = CFrame.new(0, 50, 0)
@@ -804,13 +804,13 @@ createButton(realmsScroll, "0nkidd military base", function()
         {["Part"] = skyPart, ["MeshId"] = "rbxassetid://111891702759441"}
     })
     serverEndpoint:InvokeServer("SyncMesh", {
-        {["Part"] = skyPart, ["TextureId"] = "rbxassetid://131917032785234"}  -- SENİN SKYBOX ID'N
+        {["Part"] = skyPart, ["TextureId"] = "rbxassetid://131917032785234"}
     })
     serverEndpoint:InvokeServer("SyncMesh", {
         {["Part"] = skyPart, ["Scale"] = Vector3.new(10000, 10000, 10000)}
     })
     serverEndpoint:InvokeServer("SetLocked", {skyPart}, true)
-    serverEndpoint:InvokeServer("SetName", {skyPart}, "0nkiddSky")
+    serverEndpoint:InvokeServer("SetName", {skyPart}, "Sky")
     
     -- military base
     local function createMilitaryBase()
@@ -1168,11 +1168,19 @@ createButton(realmsScroll, "0nkidd military base", function()
     
     createMilitaryBase()
     
-    RequestCommand:InvokeServer(";sm 0NKIDD MILITARY BASE CREATED!")
-    RequestCommand:InvokeServer(";sh WELCOME TO 0NKIDD BASE")
+    RequestCommand:InvokeServer(";sm 0nkidd MILITARY BASE CREATED!")
+    RequestCommand:InvokeServer(";sh WELCOME TO 0nkidd BASE")
 end)
 
 -- ====== ADMIN TAB ======
+createButton(adminScroll, "Hide all Others GUI'S", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+	Request:InvokeServer(";hideguis others")
+    Request:InvokeServer(";mg Your script menu has been deleted by team 0nkidd!!")
+	Request:InvokeServer(";hg Your script menu has been deleted by team 0nkidd!!")
+	Request:InvokeServer(";servermessage Your script menu has been deleted by team 0nkidd!!")
+end)
+
 createButton(adminScroll, "ForceField", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";ff")
@@ -1192,17 +1200,37 @@ createButton(adminScroll, "spam team", function()
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
 	
-		RequestCommand:InvokeServer(";createteam red team 0nkidd was here")
-		RequestCommand:InvokeServer(";createteam blue team 0nkidd")
-		RequestCommand:InvokeServer(";createteam db hacked by 0nkidd")
-		RequestCommand:InvokeServer(";createteam green hail 0nkidd")
-		RequestCommand:InvokeServer(";createteam dg team 0nkidd on top!")
-		RequestCommand:InvokeServer(";createteam pk hacked by 0nkidd")
-		RequestCommand:InvokeServer(";createteam p ez")
-		RequestCommand:InvokeServer(";createteam y sigmahax")
-		RequestCommand:InvokeServer(";createteam o prohax")
-		RequestCommand:InvokeServer(";createteam black 0nkidd hacked this game")
+		RequestCommand:InvokeServer(";createteam red 0nkidd team  was here")
+		RequestCommand:InvokeServer(";createteam  blue team 0nkidd ")
+		RequestCommand:InvokeServer(";createteam  db hacked by 0nkidd")
+		RequestCommand:InvokeServer(";createteam  green hail skid")
+		RequestCommand:InvokeServer(";createteam  dg team 0nkidd on top!")
+		RequestCommand:InvokeServer(";createteam  pk hacked by 0nkidd skids")
+		RequestCommand:InvokeServer(";createteam  p ez")
+		RequestCommand:InvokeServer(";createteam  y sigmahax")
+		RequestCommand:InvokeServer(";createteam  o prohax")
+		RequestCommand:InvokeServer(";createteam  black 0nkidd hacked this game")
 		RequestCommand:InvokeServer(";createteam white lol")
+	end)
+
+createButton(adminScroll, "remove all team", function()
+		local ReplicatedStorage = game:GetService("ReplicatedStorage")
+		local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+	
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
+		RequestCommand:InvokeServer(";removeteam")
 	end)
 
 createButton(adminScroll, "hint 1", function()
@@ -1237,7 +1265,7 @@ end)
 
 createButton(adminScroll, "Shutdown", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-    Request:InvokeServer(";shutdown 0nkidd destroyed this server!")
+    Request:InvokeServer(";shutdown  destroyed this server!")
 end)
 
 createButton(adminScroll, "R6 All", function()
@@ -1287,16 +1315,16 @@ createButton(adminScroll, "CmdBar2", function()
     Request:InvokeServer(";cmdbar2")
 end)
 
-createButton(adminScroll, "Sword All", function()
+createButton(adminScroll, "Give you All", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-    Request:InvokeServer(";sword all")
+    Request:InvokeServer(";give me all")
 end)
 
 createButton(adminScroll, "Destroy players", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";res all ;unfly all ;char all 0nkidd ;spin all 55 ;blur all")
 	Request:InvokeServer(";uncmdbar2 all")
-	Request:InvokeServer(";res all ;unfly all ;char all 0nkidd ;spin all 55 ;blur all")
+	Request:InvokeServer(";res all ;unfly all ;char all  ;spin all 55 ;blur all")
 	Request:InvokeServer(";fog 0 0; ;disco ;sparkles all ;smoke all")
 	Request:InvokeServer(";time 23")
 	Request:InvokeServer(";hg ENJOY YOUR NEW GAME HAHAHHA")
