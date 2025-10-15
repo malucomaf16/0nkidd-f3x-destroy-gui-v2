@@ -1173,7 +1173,7 @@ createButton(realmsScroll, "0nkidd military base", function()
 end)
 
 -- ====== ADMIN TAB ======
-createButton(adminScroll, "Hide all Others GUI'S", function()
+createButton(adminScroll, "Hide all Others GUI'S and HD", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
 	Request:InvokeServer(";hideGuis others")
 	Request:InvokeServer(";hg Your script menu has been deleted by team 0nkidd!!")
