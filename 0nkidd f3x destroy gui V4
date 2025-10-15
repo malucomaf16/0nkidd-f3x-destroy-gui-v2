@@ -1198,17 +1198,17 @@ createButton(adminScroll, "spam team", function()
 		local ReplicatedStorage = game:GetService("ReplicatedStorage")
 		local RequestCommand = ReplicatedStorage:WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
 	
-		RequestCommand:InvokeServer(";createteam red 0nkidd team  was here")
+		RequestCommand:InvokeServer(";createteam red team 0nkidd was here")
 		RequestCommand:InvokeServer(";createteam  blue team 0nkidd ")
 		RequestCommand:InvokeServer(";createteam  db hacked by 0nkidd")
-		RequestCommand:InvokeServer(";createteam  green hail skid")
+		RequestCommand:InvokeServer(";createteam  green hail 0nkidd")
 		RequestCommand:InvokeServer(";createteam  dg team 0nkidd on top!")
 		RequestCommand:InvokeServer(";createteam  pk hacked by 0nkidd skids")
 		RequestCommand:InvokeServer(";createteam  p ez")
 		RequestCommand:InvokeServer(";createteam  y sigmahax")
 		RequestCommand:InvokeServer(";createteam  o prohax")
 		RequestCommand:InvokeServer(";createteam  black 0nkidd hacked this game")
-		RequestCommand:InvokeServer(";createteam white lol")
+		RequestCommand:InvokeServer(";createteam white lol skids")
 	end)
 
 createButton(adminScroll, "remove all team", function()
@@ -1382,6 +1382,11 @@ createButton(musicScroll, "ERROR 264", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
 	local ReplicatedStorage = game:GetService("ReplicatedStorage")
     Request:InvokeServer(";music 140009716850576 ;pitch 0.85 ;volume inf")
+end)
+createButton(musicScroll, "spooky scare lol", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+	local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    Request:InvokeServer(";music 100828050594137 ;pitch 1.25 ;volume inf")
 end)
 
 createButton(musicScroll, "won't stop us", function()
