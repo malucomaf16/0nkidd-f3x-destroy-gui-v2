@@ -1175,10 +1175,8 @@ end)
 -- ====== ADMIN TAB ======
 createButton(adminScroll, "Hide all Others GUI'S", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-	Request:InvokeServer(";hideguis others")
-    Request:InvokeServer(";mg Your script menu has been deleted by team 0nkidd!!")
+	Request:InvokeServer(";hideGuis others")
 	Request:InvokeServer(";hg Your script menu has been deleted by team 0nkidd!!")
-	Request:InvokeServer(";servermessage Your script menu has been deleted by team 0nkidd!!")
 end)
 
 createButton(adminScroll, "ForceField", function()
