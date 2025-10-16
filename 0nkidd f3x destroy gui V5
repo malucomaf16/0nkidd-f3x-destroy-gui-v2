@@ -2328,10 +2328,9 @@ createButton(realmsScroll, "0nkidd military base", function()
 end)
 
 -- ====== ADMIN TAB ======
-createButton(adminScroll, "Hide all Others GUI'S and HD", function()
+createButton(adminScroll, "Delete others GUI's (spam if you need)", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-	Request:InvokeServer(";hideGuis others")
-	Request:InvokeServer(";hg Your script menu has been deleted by team 0nkidd!!")
+	Request:InvokeServer(";hideGuis others ;res others")
 end)
 
 createButton(adminScroll, "Arrest others", function()
@@ -2712,9 +2711,9 @@ createButton(adminScroll, "Bring All", function()
     Request:InvokeServer(";bring all")
 end)
 
-createButton(adminScroll, "Kill All", function()
+createButton(adminScroll, "respawn Others", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-    Request:InvokeServer(";kill all")
+    Request:InvokeServer(";res others")
 end)
 
 createButton(adminScroll, "Kill Others", function()
@@ -2729,7 +2728,12 @@ end)
 
 createButton(adminScroll, "Shutdown", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
-    Request:InvokeServer(";shutdown  destroyed this server!")
+    Request:InvokeServer(";shutdown 0nkidd destroyed this server!")
+end)
+
+createButton(adminScroll, "Kick all", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";kick all 0nkidd destroyed this server hahahha !!")
 end)
 
 createButton(adminScroll, "R6 All", function()
@@ -2746,6 +2750,11 @@ createButton(adminScroll, "Titles", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
     Request:InvokeServer(";title all join team 0nkidd today!")
 	Request:InvokeServer(";titleg me 0nkidd")
+end)
+
+createButton(adminScroll, "Titles 2", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";title all HAXXED BY TEAM 0NKIDD ")
 end)
 
 createButton(adminScroll, "disco", function()
