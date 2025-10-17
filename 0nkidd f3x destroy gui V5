@@ -2867,6 +2867,10 @@ createButton(musicScroll, "lift off", function()
 	
 	RequestCommand:InvokeServer(";music 94284750410104 ;pitch 0.19 ;volume inf")
 	end)
+createButton(musicScroll, "0nkidd theme 2", function()
+    local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
+    Request:InvokeServer(";music 76578817848504 ;volume inf")
+end)
 
 createButton(musicScroll, "ERROR 264", function()
     local Request = game:GetService("ReplicatedStorage"):WaitForChild("HDAdminHDClient").Signals.RequestCommandSilent
